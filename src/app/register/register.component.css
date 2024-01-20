@@ -1,0 +1,67 @@
+/* app.component.css */
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  background-image: url('https://media.istockphoto.com/photos/doctor-with-stethoscope-in-hand-on-hospital-background-picture-id695337976?k=6&m=695337976&s=170667a&w=0&h=7dKOmqiXbQuvywd8B1njnypEhd9jzyqQpQnUMgv670s=');
+  background-size: cover;
+  background-position: center;
+}
+
+c-toast {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+}
+
+.error {
+  color: red;
+}
+
+.registration-form {
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: -600px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-degree-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.register-btn {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wallpaperaccess.com/full/1076735.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: -689px;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin-bottom: -400px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 445px;
+            margin-left: -570px;
+            margin-bottom: 400px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .register-button {
+            background-color: #bd9c47;
+        }
+
+        .register-button:hover {
+            background-color: #8c7136;
+        }
+
+        @media screen and (min-width: 768px) {
+            .image-container img {
+                width: 200px;
+                /* height: 200px; */
+            }
+
+            .button-container button {
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .image-container img {
+                width: 250px;
+                height: 300px;
+            }
+
+            .button-container button {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <ng-container>
+        <div style="width: 100%; text-align: center; background-color: #da6d6d;">
+            <marquee behavior="scroll" direction="right" style="font-size: 25px; font-weight: bold;">
+                Register a Doctor
+            </marquee>
+        </div>
+        <div class="image-container">
+            <img src="assets/images/MD.png" alt="Your Image">
+        </div>
+
+        <div class="button-container">
+            <button style="background-color: #1e633a;">Login</button>
+            <button onclick="window.location.href='/register'" class="register-button">Register</button>
+            <button onclick="window.location.href='/doctor'" style="background-color: #1e633a;">View Doctors</button>
+        </div>
+    </ng-container>
+
+</body>
+
+</html>

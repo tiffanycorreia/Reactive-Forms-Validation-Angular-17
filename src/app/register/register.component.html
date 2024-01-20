@@ -1,0 +1,209 @@
+<div class="registration-container">
+  <form [formGroup]="registrationForm" class="registration-form" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center;">Registration Form</h2><br>
+
+    <div class="form-group">
+      <label>Mobile Number<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="mobile"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['mobile'].errors }"
+      />
+      @if (submitted && f['mobile'].errors) {
+      <div class="invalid-feedback">
+        @if (f['mobile'].errors['required']) {
+        <div class="error">Mobile Number is required</div>
+        }
+		@if (f['mobile'].errors['invalidMobile']) {
+        <div class="error">Mobile Number is invalid</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Email<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['email'].errors }"
+      />
+      @if (submitted && f['email'].errors) {
+      <div class="invalid-feedback">
+        @if (f['email'].errors['required']) {
+        <div class="error">Email is required</div>
+        }
+		@if (f['email'].errors['invalidEmail']) {
+        <div class="error">Email is invalid</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Full Name<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="fullName"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['fullName'].errors }"
+      />
+      @if (submitted && f['fullName'].errors) {
+      <div class="invalid-feedback">
+        @if (f['fullName'].errors['required']) {
+        <div class="error">Full Name is required</div>
+        }
+		@if (f['fullName'].errors['invalidFullName']) {
+        <div class="error">Full Name is invalid</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Set Password<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="password"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['password'].errors }"
+      />
+      @if (submitted && f['password'].errors) {
+      <div class="invalid-feedback">
+        @if (f['password'].errors['required']) {
+        <div class="error">Password is required</div>
+        }
+		@if (f['password'].errors['invalidPassword']) {
+        <div class="error">Password is invalid</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="confirmPassword"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+      />
+      @if (submitted && f['confirmPassword'].errors) {
+      <div class="invalid-feedback">
+        @if (f['confirmPassword'].errors['required']) {
+        <div class="error">Set a password</div>
+        }
+		@if (f['confirmPassword'].errors['passwordMismatch']) {
+        <div class="error">Password does not match</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Date of Graduation<span style="color: red;">*</span></label>
+      <input
+        type="date"
+        formControlName="graduation"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['graduation'].errors }"
+      />
+      @if (submitted && f['graduation'].errors) {
+      <div class="invalid-feedback">
+        @if (f['graduation'].errors['required']) {
+        <div class="error">Date of Graduation is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Degree 1<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="degree1"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['degree1'].errors }"
+      />
+      @if (submitted && f['degree1'].errors) {
+      <div class="invalid-feedback">
+        @if (f['degree1'].errors['required']) {
+        <div class="error">Degree 1 is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Degree 2<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="degree2"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['degree2'].errors }"
+      />
+      @if (submitted && f['degree2'].errors) {
+      <div class="invalid-feedback">
+        @if (f['degree2'].errors['required']) {
+        <div class="error">Degree 2 is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div formArrayName="additionalDegrees">
+      <div *ngFor="let degree of additionalDegreesArray.controls; let i = index" [formGroupName]="i">
+        <label for="additionalDegree{{ i + 3 }}">Additional Degree {{ i + 3 }}:<span style="color: red;">*</span></label>
+        <input type="text" [id]="'additionalDegree' + (i + 3)" formControlName="additionalDegree">
+        
+        <!-- Display error message if validation fails -->
+        <div *ngIf="degree?.get('additionalDegree')?.hasError('required') && degree?.get('additionalDegree')?.touched" class="error">
+          Additional Degree is required.
+        </div><br>
+        <div *ngIf="degree?.get('additionalDegree')?.hasError('minlength') && degree?.get('additionalDegree')?.touched" class="error">
+          Additional Degree must be at least 3 characters.
+        </div>
+      </div>
+    </div>    
+
+    <button type="button" (click)="addDegree()" class="btn register-btn">Add Another Degree</button><br><br>
+
+    <div class="form-group">
+      <label>Online Consultant Fee<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="onlineConsultantFee"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['onlineConsultantFee'].errors }"
+      />
+      @if (submitted && f['onlineConsultantFee'].errors) {
+      <div class="invalid-feedback">
+        @if (f['onlineConsultantFee'].errors['required']) {
+        <div class="error">In Person Consultant Fee is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>In Person Consultant Fee<span style="color: red;">*</span></label>
+      <input
+        type="text"
+        formControlName="inPersonConsultantFee"
+        class="form-control"
+        ngClass="{ 'is-invalid': submitted && f['inPersonConsultantFee'].errors }"
+      />
+      @if (submitted && f['inPersonConsultantFee'].errors) {
+      <div class="invalid-feedback">
+        @if (f['inPersonConsultantFee'].errors['required']) {
+        <div class="error">In Person Consultant Fee is required</div>
+        }
+      </div>
+      }
+    </div>
+
+    <button type="button" (click)="onRegisterClick()" class="btn register-btn">Register</button>
+  </form>
+</div>
